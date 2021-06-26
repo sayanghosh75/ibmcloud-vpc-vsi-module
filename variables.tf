@@ -66,7 +66,7 @@ variable "vsi_profile" {
 
 variable "ssh_key_name" {
   description = "Name of SSH key to loaded"
-  default     = "shallcrm-ibmcloud-ssh-key"
+  default     = "shallcrm-ibmcloud-pwless-ssh-key"
 }
 
 variable "floating_ip" {

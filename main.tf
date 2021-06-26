@@ -20,10 +20,6 @@ data "ibm_is_security_group" "ds_sg" {
   name = var.security_group_name
 }
 
-data "ibm_is_security_group" "ds_sg" {
-  name = var.security_group_name
-}
-
 data "ibm_is_ssh_key" "ds_key" {
   name = var.ssh_key_name
 }

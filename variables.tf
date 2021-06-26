@@ -45,7 +45,7 @@ variable "security_group_name" {
 ##############################################################################
 
 # Unique prefix for VSI names 
-variable "vsi_prexfix" {
+variable "vsi_prefix" {
   description = "Unique prefix for VSI names"
 }
 

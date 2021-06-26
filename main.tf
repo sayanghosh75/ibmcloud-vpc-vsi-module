@@ -63,7 +63,7 @@ resource "ibm_is_instance" "vsi" {
 # Provision floating IP if requested 
 
 resource "ibm_is_floating_ip" "vsi" {
-  count  = var.floating_ip ? vsi_count : 0             # Count is 0 if variable set to false, 1 if set to true
+  count  = var.floating_ip ? var.vsi_count : 0             # Count is 0 if variable set to false, otherwise create for each VSI
   name   = "${var.vsi_prefix}-fip-${count.index + 1}"
   target = ibm_is_instance.vsi[count.index].primary_network_interface[0].id
 }

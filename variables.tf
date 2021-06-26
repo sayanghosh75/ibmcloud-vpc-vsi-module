@@ -69,7 +69,7 @@ variable "ssh_key_name" {
   default     = "shallcrm-ibmcloud-ssh-key"
 }
 
-# variable "floating_ip" {
-#   description = "Add floating IP?"
-#   default     = false
-# }
+variable "floating_ip" {
+  description = "Add floating IP?"
+  default     = false
+}

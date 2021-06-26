@@ -62,11 +62,11 @@ resource "ibm_is_instance" "vsi" {
 
 # Provision floating IP if requested 
 
-resource "ibm_is_floating_ip" "vsi" {
-  count  = var.floating_ip ? 1: 0             # Count is 0 if variable set to false, 1 if set to true
-  name   = "${ibm_is_instance.vsi.name}-fip-${count.index + 1}"
-  target = ibm_is_instance.vsi[count.index].primary_network_interface[0].id
-}
+# resource "ibm_is_floating_ip" "vsi" {
+#   count  = var.floating_ip ? 1: 0             # Count is 0 if variable set to false, 1 if set to true
+#   name   = "${ibm_is_instance.vsi.name}-fip-${count.index + 1}"
+#   target = ibm_is_instance.vsi[count.index].primary_network_interface[0].id
+# }
 
 
 

@@ -4,7 +4,7 @@
 
 # Target region
 variable "ibm_region" {
-  description = "IBM Cloud region where all VPC resources will be deployed"
+  description = "IBM Cloud region where the VPC is deployed"
   default     = "au-syd"
 }
 
@@ -12,16 +12,10 @@ variable "ibm_region" {
 #   description = "IBM Cloud API key when run standalone"
 # }
 
-# Resource group name
+# Resource group name - SHOULD BE ABLE TO READ THIS FROM VPC
 variable "resource_group_name" {
-  description = "Name of IBM Cloud resource group to be used for all VPC resources"
+  description = "Name of IBM Cloud resource group to be used for new VPC resources"
   default     = "VPC-admin"
-}
-
-# Unique name for the VPC in the account 
-variable "vpc_name" {
-  description = "Name of VPC"
-  default     = "shallcrm-vpc"
 }
 
 
@@ -29,59 +23,53 @@ variable "vpc_name" {
 # Network variables
 ##############################################################################
 
-# When running under Schematics the default here is overriden to only SSH access 
-# from remove-exec or Redhat Ansible running under Schematics 
-
-variable "ssh_source_cidr_override" {
-  type        = list
-  description = "Override CIDR range that is allowed to ssh to the bastion"
-  default     = ["0.0.0.0/0"]
+# VPC name in which we will provision VSIs - must aleady exist 
+variable "vpc_name" {
+  description = "Name of existing VPC"
 }
 
-
-locals {
-  pub_repo_egress_cidr = "0.0.0.0/0" # cidr range required to contact public software repositories 
+# Subnet to which we will attach VSIs - must aleady exist 
+variable "subnet_name" {
+  description = "Name of existing subnet within the VPC"
 }
 
-# Predefine subnet IP address ranges for all app tiers for use with `ibm_is_address_prefix`.  
-# Each app tier uses: 
-# frontend_cidr_blocks = [cidrsubnet(var.frontend_cidr, 4, 0), cidrsubnet(var.frontend_cidr, 4, 2), cidrsubnet(var.frontend_cidr, 4, 4)]
-# to create individual zone subnets for use with `ibm_is_address_prefix`
-
-variable "bastion_cidr" {
-  description = "Complete CIDR range across all three zones for bastion host subnets"
-  default     = "172.16.0.0/20"
+# Security group to which we will attach network interfaces - must aleady exist 
+variable "security_group_name" {
+  description = "Name of existing security group within the VPC"
 }
 
-variable "frontend_cidr" {
-  description = "Complete CIDR range across all three zones for frontend subnets"
-  default     = "172.17.0.0/20"
-}
-
-variable "backend_cidr" {
-  description = "Complete CIDR range across all three zones for backend subnets"
-  default     = "172.18.0.0/20"
-}
-
-variable "bastion_count" {
-  description = "Number of bastion zones"
-  default     = 1
-}
-
-variable "frontend_count" {
-  description = "Number of front end zones (and public gateways)"
-  default     = 1
-}
-
-variable "backend_count" {
-  description = "Number of back end zones"
-  default     = 1
-}
 
 
 ##############################################################################
 # Virtual server variables
 ##############################################################################
 
+# Unique prefix for VSI names 
+variable "vsi_prexfix" {
+  description = "Unique prefix for VSI names"
+}
 
+variable "vsi_count" {
+  description = "Number of VSIs to be provisioned"
+  default     = 1
+}
 
+variable "vsi_image" {
+  description = "Image name from VPC image catalog"
+  default     = "ibm-ubuntu-20-04-minimal-amd64-2"
+}
+
+variable "vsi_profile" {
+  description = "Profile name from VPC image catalog"
+  default     = "cx2-2x4"
+}
+
+variable "ssh_key_name" {
+  description = "Name of SSH key to loaded"
+  default     = "shallcrm-ibmcloud-ssh-key"
+}
+
+variable "floating_ip" {
+  description = "Add floating IP?"
+  default     = false
+}

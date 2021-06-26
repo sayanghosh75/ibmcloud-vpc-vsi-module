@@ -1,8 +1,8 @@
 # # Single value, pending support for multiple output values in schematics_workspace_putputs data source
 
-output "vsi_floating_ip_address" {
-  value = [module.vsi.vsi_floating_ip_address]
-}
+# output "vsi_floating_ip_address" {
+#   value = [module.vsi.vsi_floating_ip_address]
+# }
 
 # # output "bastion_host_ip_addresses" {
 # #   value = module.bastion.bastion_ip_addresses

@@ -67,7 +67,7 @@ variable "vsi_profile" {
 variable "ssh_key_name" {
   type        = list
   description = "List of SSH key names to be loaded (comma separated)"
-  default     = ["shallcrm-ibmcloud-pwless-ssh-key", "shallcrm-vsi-ansible-pwless_ssh-key"]
+  default     = ["shallcrm-ibmcloud-pwless-ssh-key", "shallcrm-vsi-ansible-pwless-ssh-key"]
 }
 
 variable "floating_ip" {

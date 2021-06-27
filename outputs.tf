@@ -25,6 +25,6 @@ output "ssh_keys" {
     value = [data.ibm_is_ssh_key.ds_key]
 }
 
-output "ssh_keys" {
+output "ssh_keys2" {
     value = [data.ibm_is_ssh_key.ds_key2]
 }

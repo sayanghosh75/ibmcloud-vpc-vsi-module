@@ -65,7 +65,6 @@ variable "vsi_profile" {
 }
 
 variable "ssh_key_name" {
-  type        = list
   description = "List of SSH key names to be loaded (comma separated)"
   default     = "shallcrm-ibmcloud-pwless-ssh-key"
 }

@@ -74,3 +74,8 @@ variable "floating_ip" {
   description = "Add floating IP?"
   default     = false
 }
+
+variable "TF_LOG" {
+  description = "Debug level"
+  default     = "DEBUG"
+}

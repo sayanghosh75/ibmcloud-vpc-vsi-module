@@ -21,7 +21,11 @@ data "ibm_is_security_group" "ds_sg" {
 }
 
 data "ibm_is_ssh_key" "ds_key" {
-  for_each = toset(var.ssh_key_name)
+  name = var.ssh_key_name
+}
+
+data "ibm_is_ssh_key" "ds_key2" {
+  for_each = toset(var.ssh_key_name2)
   name = each.value
 }
 
@@ -48,8 +52,7 @@ resource "ibm_is_instance" "vsi" {
   vpc            = data.ibm_is_subnet.ds_subnet.vpc
   zone           = data.ibm_is_subnet.ds_subnet.zone
   resource_group = data.ibm_resource_group.ds_rg.id
-  # keys           = var.ssh_key_name != "" ? concat(data.ibm_is_ssh_key.ds_key.*.id, [ibm_is_ssh_key.build_key.id]) : [ibm_is_ssh_key.build_key.id]
-  keys           = [data.ibm_is_ssh_key.ds_key.*.id]
+  keys           = [data.ibm_is_ssh_key.ds_key.id]
   # user_data      = file("${path.module}/vsi_config.yml")
   user_data      = data.template_cloudinit_config.vsi_userdata.rendered  //  Cloudinit data
 

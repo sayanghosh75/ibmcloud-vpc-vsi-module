@@ -25,8 +25,8 @@ data "ibm_is_ssh_key" "ds_key" {
 }
 
 data "ibm_is_ssh_key" "ds_key2" {
-  # for_each = toset(var.ssh_key_name2)
-  for_each = var.ssh_key_name2
+  for_each = toset(var.ssh_key_name2)
+  # for_each = var.ssh_key_name2
   name = each.value
 }
 

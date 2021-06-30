@@ -66,7 +66,7 @@ variable "vsi_profile" {
 
 variable "ssh_key_name" {
   description = "Name of SSH key to be loaded"
-  default     = "shallcrm-ibmcloud-pwless-ssh-key"
+  default     = "shallcrm-vsi-ansible-pwless-ssh-key"
 }
 
 variable "ssh_key_name2" {

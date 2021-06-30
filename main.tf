@@ -35,7 +35,6 @@ data "ibm_is_image" "ds_os" {
 
 
 
-
 # # Create virtual server instance
 
 resource "ibm_is_instance" "vsi" {
@@ -52,8 +51,8 @@ resource "ibm_is_instance" "vsi" {
   vpc            = data.ibm_is_subnet.ds_subnet.vpc
   zone           = data.ibm_is_subnet.ds_subnet.zone
   resource_group = data.ibm_resource_group.ds_rg.id
-  keys           = tolist(data.ibm_is_ssh_key.ds_key2[*].id)
-  # keys           = [data.ibm_is_ssh_key.ds_key.id]
+  # keys           = tolist(data.ibm_is_ssh_key.ds_key2[*].id)
+  keys           = [data.ibm_is_ssh_key.ds_key.id]
   # user_data      = file("${path.module}/vsi_config.yml")
   user_data      = data.template_cloudinit_config.vsi_userdata.rendered  //  Cloudinit data
 

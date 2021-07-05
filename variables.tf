@@ -32,13 +32,13 @@ variable "vpc_name" {
 # Subnet to which we will attach VSIs - must aleady exist 
 variable "subnet_name" {
   description = "Name of existing subnet within the VPC"
-  default     = ""
+  default     = "sayan-tf-vpc-bastion-subnet-1"
 }
 
 # Security group to which we will attach network interfaces - must aleady exist 
 variable "security_group_name" {
   description = "Name of existing security group within the VPC"
-  default     = ""
+  default     = "sayan-tf-vpc-bastion-sg"
 }
 
 

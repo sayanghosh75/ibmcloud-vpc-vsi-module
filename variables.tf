@@ -26,16 +26,19 @@ variable "resource_group_name" {
 # VPC name in which we will provision VSIs - must aleady exist 
 variable "vpc_name" {
   description = "Name of existing VPC"
+  default     = "sayan-tf-vpc"
 }
 
 # Subnet to which we will attach VSIs - must aleady exist 
 variable "subnet_name" {
   description = "Name of existing subnet within the VPC"
+  default     = ""
 }
 
 # Security group to which we will attach network interfaces - must aleady exist 
 variable "security_group_name" {
   description = "Name of existing security group within the VPC"
+  default     = ""
 }
 
 

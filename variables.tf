@@ -69,13 +69,13 @@ variable "vsi_profile" {
 
 variable "ssh_key_name" {
   description = "Name of SSH key to be loaded"
-  default     = "shallcrm-vsi-ansible-pwless-ssh-key"
+  default     = "sayan-aws-master"
 }
 
 variable "ssh_key_name2" {
   type        = list
   description = "List of SSH key names to be loaded (for my debugging only)"
-  default     = ["shallcrm-ibmcloud-pwless-ssh-key", "shallcrm-vsi-ansible-pwless-ssh-key"]
+  default     = ["sayan-aws-master", "sayan-aws-jg-com"]
 }
 
 variable "floating_ip" {
